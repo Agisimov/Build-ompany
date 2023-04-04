@@ -112,7 +112,7 @@
                 Content="Назад"
                 Height="30"
                 Width="100"
-                Margin="0 300 400 0">
+                Margin="0 300 400 0" Click="btnBack_Click_1" >
         </Button>
 
     </Grid>

@@ -49,5 +49,17 @@ namespace ON163.Pagers
                 MatGrid.ItemsSource = context.Material.ToList();
             }
         }
+
+       
+
+        private void Poisk_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Poisk.Text))
+            {
+                MatGrid.ItemsSource = context.Material.ToList();
+                return;
+            }
+            MatGrid.ItemsSource = context.Material.ToList().Where(i => i.Title.Contains(Poisk.Text));
+        }
     }
 }

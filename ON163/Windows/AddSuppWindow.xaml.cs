@@ -28,13 +28,43 @@ namespace ON163.Windows
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            DB.Supplier supplier = new DB.Supplier();
-            supplier.Title =  tbTitle.Text;
-            supplier.Address = tbAddress.Text;
-            supplier.INN = tbINN.Text; 
-            supplier.Phone = tbPhone.Text;
-            context.Supplier.Add(supplier);
-            context.SaveChanges();
+            if (string.IsNullOrWhiteSpace(tbTitle.Text))
+            {
+                MessageBox.Show("Название  не может быть пустым");
+            }
+            else if (string.IsNullOrWhiteSpace(tbAddress.Text))
+            {
+                MessageBox.Show("адресс не может быть пустым");
+            }
+            else if (string.IsNullOrWhiteSpace(tbINN.Text))
+            {
+                MessageBox.Show("ИНН не может быть пустым");
+            }
+            else if (string.IsNullOrWhiteSpace(tbPhone.Text))
+            {
+                MessageBox.Show("Телефон не может быть пустым");
+            }
+            else
+            {
+                DB.Supplier supplier = new DB.Supplier();
+                supplier.Title = tbTitle.Text;
+                supplier.Address = tbAddress.Text;
+                supplier.INN = tbINN.Text;
+                supplier.Phone = tbPhone.Text;
+                context.Supplier.Add(supplier);
+                context.SaveChanges();
+                this.Close();
+            }
+
+
+
+
+         
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

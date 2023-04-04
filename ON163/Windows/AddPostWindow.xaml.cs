@@ -28,13 +28,28 @@ namespace ON163.Windows
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            DB.Post post = new Post();
-            post.Title = TBTitle.Text;
-            post.Discription = TBTDisk.Text;
-            context.Post.Add(post);
-            context.SaveChanges();
+            if (string.IsNullOrWhiteSpace(TBTitle.Text))
+            {
+                MessageBox.Show("Название не может быть пустым");
+            }
+            else if (string.IsNullOrWhiteSpace(TBTDisk.Text))
+            {
+                MessageBox.Show("Описание не может быть пустым");
+            }
+            else
+            {
+                DB.Post post = new Post();
+                post.Title = TBTitle.Text;
+                post.Discription = TBTDisk.Text;
+                context.Post.Add(post);
+                context.SaveChanges();
+                this.Close();
+                MessageBox.Show("Ок");
+            }
+
+
+
             
-            MessageBox.Show("Ок");
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

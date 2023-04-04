@@ -28,11 +28,32 @@ namespace ON163.Windows
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            DB.Authorization authorization = new DB.Authorization();
-            authorization.Password = tbPass.Text;
-            authorization.Login = tbLogin.Text;
-            context.Authorization.Add(authorization);
-            context.SaveChanges();
+            if (string.IsNullOrWhiteSpace(tbLogin.Text))
+            {
+                MessageBox.Show("Логин не может быть пустой");
+            }
+            else if (string.IsNullOrWhiteSpace(tbPass.Text))
+            {
+                MessageBox.Show("Пароль не может быть пустой");
+            }
+            else
+            {
+                DB.Authorization authorization = new DB.Authorization();
+                authorization.Password = tbPass.Text;
+                authorization.Login = tbLogin.Text;
+                context.Authorization.Add(authorization);
+                context.SaveChanges();
+                this.Close();
+            }
+
+
+
+          
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

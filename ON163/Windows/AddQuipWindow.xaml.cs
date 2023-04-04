@@ -28,11 +28,32 @@ namespace ON163.Windows
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            DB.Equipment equipment = new DB.Equipment();
-            equipment.Title = tbTitle.Text;
-            equipment.Discription = tbDisc.Text;
-            context.Equipment.Add(equipment);
-            context.SaveChanges();
+            if (string.IsNullOrWhiteSpace(tbTitle.Text))
+            {
+                MessageBox.Show("Название не ожет быть пустым");
+            }
+            else if (string.IsNullOrWhiteSpace(tbDisc.Text))
+            {
+                MessageBox.Show("Описание не может быть пустым");
+            }
+            else
+            {
+                DB.Equipment equipment = new DB.Equipment();
+                equipment.Title = tbTitle.Text;
+                equipment.Discription = tbDisc.Text;
+                context.Equipment.Add(equipment);
+                context.SaveChanges();
+                this.Close();
+            }
+
+
+
+            
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

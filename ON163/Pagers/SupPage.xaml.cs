@@ -46,5 +46,25 @@ namespace ON163.Pagers
                 SupGrid.ItemsSource = context.Supplier.ToList();
             }
         }
+
+        private void PoiskFamilii_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(PoiskFamilii.Text))
+            {
+                SupGrid.ItemsSource = context.Supplier.ToList();
+                return;
+            }
+            SupGrid.ItemsSource = context.Supplier.ToList().Where(i => i.Title.Contains(PoiskFamilii.Text));
+        }
+
+        private void PoiskImy_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(PoiskImy.Text))
+            {
+                SupGrid.ItemsSource = context.Supplier.ToList();
+                return;
+            }
+            SupGrid.ItemsSource = context.Supplier.ToList().Where(i => i.Phone.Contains(PoiskImy.Text));
+        }
     }
 }

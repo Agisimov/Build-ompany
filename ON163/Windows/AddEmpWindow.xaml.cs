@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using static ON163.ClassHelper.EFClass;
 using ON163.DB;
+using ON163.Pagers;
 
 namespace ON163.Windows
 {
@@ -31,18 +32,57 @@ namespace ON163.Windows
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            DB.Employee employee = new Employee();
-            employee.FirstName = tbFName.Text;
-            employee.LastName = tbFName.Text;
-            employee.Patronymic = tbPatr.Text;
-            employee.BirthDay = dpBirthDay.SelectedDate.Value;
-            employee.Email = tbFName.Text;
-            employee.Phone = tbFName.Text;
-            employee.IdPost = (cmbPost.SelectedItem as Post).Id;
-            context.Employee.Add(employee);
-            context.SaveChanges();
+            if (string.IsNullOrWhiteSpace(tbFName.Text))
+            {
+                MessageBox.Show("Имя не можеь быть устым");
+            }
+            else if(string.IsNullOrWhiteSpace(tbFName.Text))
+            {
+                MessageBox.Show("Фамилия не можеь быть пустой");
+            }
+            else if (string.IsNullOrWhiteSpace(tbPatr.Text))
+            {
+                MessageBox.Show("Отчество не можеь быть пустой");
+            }
+            else if (string.IsNullOrWhiteSpace(dpBirthDay.Text))
+            {
+                MessageBox.Show("Дата не можеь быть пустой");
+            }
+            else if (string.IsNullOrWhiteSpace(tbEmail.Text))
+            {
+                MessageBox.Show("Почта не можеь быть пустой");
+            }
+            else if (string.IsNullOrWhiteSpace(tbPhone.Text))
+            {
+                MessageBox.Show("Телефон не можеь быть пустым");
+            }
+            else
+            {
+                DB.Employee employee = new Employee();
+                employee.FirstName = tbFName.Text;
+                employee.LastName = tbFName.Text;
+                employee.Patronymic = tbPatr.Text;
+                employee.BirthDay = dpBirthDay.SelectedDate.Value;
+                employee.Email = tbFName.Text;
+                employee.Phone = tbFName.Text;
+                employee.IdPost = (cmbPost.SelectedItem as Post).Id;
+                context.Employee.Add(employee);
+                context.SaveChanges();
+                this.Close();
+            }
 
 
+
+
+
+         
+
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+          
+            this.Close();
         }
     }
 }

@@ -30,13 +30,37 @@ namespace ON163.Windows
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            DB.Order order = new Order();
-            order.Date = dpDate.SelectedDate.Value;
-            order.DateStart = dpDateStart.SelectedDate.Value;
-            order.DateEnd = dpDateEnd.SelectedDate.Value;
-            order.Cost = Convert.ToDecimal(tbCost.Text);
-            context.Order.Add(order);
-            context.SaveChanges();
+
+            if (string.IsNullOrWhiteSpace(dpDateStart.Text))
+            {
+                MessageBox.Show("Дата начала не может быть пустой");
+            }
+            else if (string.IsNullOrWhiteSpace(dpDateEnd.Text))
+            {
+                MessageBox.Show("Дата конца не может быть пустой");
+            }
+            else if (string.IsNullOrWhiteSpace(tbCost.Text))
+            {
+                MessageBox.Show("Цена  не может быть пустой");
+            }
+            else
+            {
+                DB.Order order = new Order();
+                order.Date = dpDate.SelectedDate.Value;
+                order.DateStart = dpDateStart.SelectedDate.Value;
+                order.DateEnd = dpDateEnd.SelectedDate.Value;
+                order.Cost = Convert.ToDecimal(tbCost.Text);
+                context.Order.Add(order);
+                context.SaveChanges();
+                this.Close();
+            }
+
+           
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

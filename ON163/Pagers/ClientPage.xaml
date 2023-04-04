@@ -38,5 +38,27 @@
                 Margin="250,410,250,10" Click="add_Click" 
                 
                 />
+            <TextBox x:Name="PoiskFamilii"
+                 Width="100"
+                 Height="30"
+                 Margin="0 0 231 400" TextChanged="PoiskFamilii_TextChanged" 
+                 />
+        <TextBlock Text="Фамилия"
+                   Height="30"
+                   Foreground="White"
+                  Margin="0 0 380 400"
+                   FontSize="15"
+                   Width="100"/>
+        <TextBox x:Name="PoiskImy"
+                 Width="100"
+                 Height="30"
+                 Margin="80 0 0  400" TextChanged="PoiskImy_TextChanged" 
+                 />
+        <TextBlock Text="Имя"
+                   Height="30"
+                   Foreground="White"
+                  Margin="0 0 50 400"
+                   FontSize="15"
+                   Width="50"/>
     </Grid>
 </Page>

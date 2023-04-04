@@ -28,12 +28,28 @@ namespace ON163.Windows
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            DB.Drawing drawing = new DB.Drawing();
-            drawing.Title = tbTitle.Text;
-            drawing.PhotoPath = tbPhoto.Text;
-            context.Drawing.Add(drawing);
-            context.SaveChanges();
 
+            if (string.IsNullOrWhiteSpace(tbTitle.Text))
+            {
+                MessageBox.Show("Название не может быть пустым");
+            }
+            else
+            {
+                DB.Drawing drawing = new DB.Drawing();
+                drawing.Title = tbTitle.Text;
+                drawing.PhotoPath = tbPhoto.Text;
+                context.Drawing.Add(drawing);
+                context.SaveChanges();
+                this.Close();
+            }
+           
+          
+
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

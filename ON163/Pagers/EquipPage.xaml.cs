@@ -46,5 +46,15 @@ namespace ON163.Pagers
                 EquipGrid.ItemsSource = context.Equipment.ToList();
             }
         }
+
+        private void Poisk_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Poisk.Text))
+            {
+                EquipGrid.ItemsSource = context.Equipment.ToList();
+                return;
+            }
+            EquipGrid.ItemsSource = context.Equipment.ToList().Where(i => i.Title.Contains(Poisk.Text));
+        }
     }
 }

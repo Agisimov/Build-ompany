@@ -28,12 +28,31 @@ namespace ON163.Windows
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-        DB.Material material = new DB.Material();
-            material.Title = tbTitle.Text;
-            material.Discription = tbDisc.Text;
-            context.Material.Add(material);
-            context.SaveChanges();
+            if (string.IsNullOrWhiteSpace(tbTitle.Text))
+            {
+                MessageBox.Show("Назване не может быть пустым");
+            }
+            else if (string.IsNullOrWhiteSpace(tbDisc.Text))
+            {
+                MessageBox.Show("Описние не может быть пустым");
+            }
+            else
+            {
+                DB.Material material = new DB.Material();
+                material.Title = tbTitle.Text;
+                material.Discription = tbDisc.Text;
+                context.Material.Add(material);
+                context.SaveChanges();
+                this.Close();
+            }
 
+        }
+
+
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

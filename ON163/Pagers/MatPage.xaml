@@ -18,7 +18,7 @@
                 <DataGridTextColumn Header="Название" Binding="{Binding Title}" Width="130"/>
                 <DataGridTextColumn Header="Описание" Binding="{Binding Discription}" Width="130"/>
             </DataGrid.Columns>
-            
+
         </DataGrid>
         <Button x:Name="delete"
                 Content="удалить"
@@ -34,5 +34,18 @@
                 Margin="250,410,250,10" Click="add_Click"  
                 
                 />
+        <TextBox x:Name="Poisk"
+                 Width="100"
+                 Height="30"
+                 Margin="0 0 231 400" TextChanged="Poisk_TextChanged_1"
+                 />
+        <TextBlock Text="Название"
+                   Height="30"
+                   Foreground="White"
+                    Margin="0 0 400 400" 
+                   Width="80"
+                  
+                   FontSize="15"/>
+
     </Grid>
 </Page>

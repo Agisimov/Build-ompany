@@ -33,5 +33,17 @@
                 Margin="250,410,250,10" Click="add_Click" 
                 
                 />
+        <TextBox x:Name="Poisk"
+                 Width="100"
+                 Height="30"
+                 Margin="0 0 231 400" TextChanged="Poisk_TextChanged" 
+                 />
+        <TextBlock Text="Название"
+                   Height="30"
+                   Foreground="White"
+                    Margin="0 0 400 400" 
+                   Width="80"
+                  
+                   FontSize="15"/>
     </Grid>
 </Page>
