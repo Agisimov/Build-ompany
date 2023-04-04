@@ -1,0 +1,1348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="100" />
+          <Property Name="BirthDay" Type="date" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="IdAuthorization" Type="int" />
+        </EntityType>
+        <EntityType Name="Drawing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PhotoPath" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DrawingOrder">
+          <Key>
+            <PropertyRef Name="IdDrawing" />
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdDrawing" Type="int" Nullable="false" />
+          <Property Name="IdOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="100" />
+          <Property Name="BirthDay" Type="date" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="IdPost" Type="int" Nullable="false" />
+          <Property Name="IdAuthorization" Type="int" />
+        </EntityType>
+        <EntityType Name="EmployeeOrder">
+          <Key>
+            <PropertyRef Name="IdEmployee" />
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdEmployee" Type="int" Nullable="false" />
+          <Property Name="IdOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Discription" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="EquipmentOrder">
+          <Key>
+            <PropertyRef Name="IdEquipment" />
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdEquipment" Type="int" Nullable="false" />
+          <Property Name="IdOrder" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EquipmentSupplier">
+          <Key>
+            <PropertyRef Name="IdEquipment" />
+            <PropertyRef Name="IdSupplier" />
+          </Key>
+          <Property Name="IdEquipment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdSupplier" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Discription" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="MaterialOrder">
+          <Key>
+            <PropertyRef Name="IdMaterial" />
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdMaterial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdOrder" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaterialSupplier">
+          <Key>
+            <PropertyRef Name="IdMaterial" />
+            <PropertyRef Name="IdSupplier" />
+          </Key>
+          <Property Name="IdMaterial" Type="int" Nullable="false" />
+          <Property Name="IdSupplier" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="DateStart" Type="date" Nullable="false" />
+          <Property Name="DateEnd" Type="date" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="IdClient" Type="int" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Discription" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="INN" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "sa.dbo.avgKir" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="avgKir">
+          <Key>
+            <PropertyRef Name="материал" />
+            <PropertyRef Name="кол-во" />
+          </Key>
+          <Property Name="материал" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="кол-во" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "sa.dbo.cl_ord" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="cl_ord">
+          <Key>
+            <PropertyRef Name="имя" />
+            <PropertyRef Name="фамилия" />
+            <PropertyRef Name="телефон" />
+            <PropertyRef Name="дата рождения" />
+          </Key>
+          <Property Name="имя" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="фамилия" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="отчество" Type="nvarchar" MaxLength="100" />
+          <Property Name="телефон" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="дата рождения" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "sa.dbo.ord_mat" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ord_mat">
+          <Key>
+            <PropertyRef Name="материал" />
+            <PropertyRef Name="цена" />
+            <PropertyRef Name="дата" />
+          </Key>
+          <Property Name="материал" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="цена" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="дата" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "sa.dbo.post_emp" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="post_emp">
+          <Key>
+            <PropertyRef Name="имя" />
+            <PropertyRef Name="фамилия" />
+            <PropertyRef Name="телефон" />
+            <PropertyRef Name="должность" />
+          </Key>
+          <Property Name="имя" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="фамилия" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="телефон" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="должность" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "sa.dbo.post_empl" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="post_empl">
+          <Key>
+            <PropertyRef Name="материал" />
+            <PropertyRef Name="поставщик" />
+          </Key>
+          <Property Name="материал" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="поставщик" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__DrawingOr__IdDra__6E01572D">
+          <End Role="Drawing" Type="Self.Drawing" Multiplicity="1" />
+          <End Role="DrawingOrder" Type="Self.DrawingOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drawing">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DrawingOrder">
+              <PropertyRef Name="IdDrawing" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DrawingOr__IdOrd__6EF57B66">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="DrawingOrder" Type="Self.DrawingOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DrawingOrder">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__IdPost__5165187F">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeO__IdEmp__6A30C649">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeeOrder" Type="Self.EmployeeOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeOrder">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeO__IdOrd__6B24EA82">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="EmployeeOrder" Type="Self.EmployeeOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeOrder">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__IdEqu__628FA481">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+          <End Role="EquipmentSupplier" Type="Self.EquipmentSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentSupplier">
+              <PropertyRef Name="IdEquipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__IdEqu__66603565">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+          <End Role="EquipmentOrder" Type="Self.EquipmentOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentOrder">
+              <PropertyRef Name="IdEquipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__IdOrd__6754599E">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="EquipmentOrder" Type="Self.EquipmentOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentOrder">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__IdSup__6383C8BA">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="EquipmentSupplier" Type="Self.EquipmentSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentSupplier">
+              <PropertyRef Name="IdSupplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MaterialO__IdMat__5EBF139D">
+          <End Role="Material" Type="Self.Material" Multiplicity="1" />
+          <End Role="MaterialOrder" Type="Self.MaterialOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialOrder">
+              <PropertyRef Name="IdMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MaterialO__IdOrd__5FB337D6">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="MaterialOrder" Type="Self.MaterialOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialOrder">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MaterialS__IdMat__5AEE82B9">
+          <End Role="Material" Type="Self.Material" Multiplicity="1" />
+          <End Role="MaterialSupplier" Type="Self.MaterialSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialSupplier">
+              <PropertyRef Name="IdMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MaterialS__IdSup__5BE2A6F2">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="MaterialSupplier" Type="Self.MaterialSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialSupplier">
+              <PropertyRef Name="IdSupplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order__IdClient__5629CD9C">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Authorization">
+          <End Role="Authorization" Type="Self.Authorization" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdAuthorization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Authorization">
+          <End Role="Authorization" Type="Self.Authorization" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdAuthorization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="age" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="age" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="mat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="title" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ord_cl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="client" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="possst" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="post" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="vremy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="data1" Type="date" Mode="In" />
+          <Parameter Name="data2" Type="date" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="Authorization" EntityType="Self.Authorization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Drawing" EntityType="Self.Drawing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DrawingOrder" EntityType="Self.DrawingOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeOrder" EntityType="Self.EmployeeOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentOrder" EntityType="Self.EquipmentOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentSupplier" EntityType="Self.EquipmentSupplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaterialOrder" EntityType="Self.MaterialOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaterialSupplier" EntityType="Self.MaterialSupplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="avgKir" EntityType="Self.avgKir" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [avgKir].[материал] AS [материал], 
+    [avgKir].[кол-во] AS [кол-во]
+    FROM [dbo].[avgKir] AS [avgKir]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="cl_ord" EntityType="Self.cl_ord" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [cl_ord].[имя] AS [имя], 
+    [cl_ord].[фамилия] AS [фамилия], 
+    [cl_ord].[отчество] AS [отчество], 
+    [cl_ord].[телефон] AS [телефон], 
+    [cl_ord].[дата рождения] AS [дата рождения]
+    FROM [dbo].[cl_ord] AS [cl_ord]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ord_mat" EntityType="Self.ord_mat" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ord_mat].[материал] AS [материал], 
+    [ord_mat].[цена] AS [цена], 
+    [ord_mat].[дата] AS [дата]
+    FROM [dbo].[ord_mat] AS [ord_mat]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="post_emp" EntityType="Self.post_emp" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [post_emp].[имя] AS [имя], 
+    [post_emp].[фамилия] AS [фамилия], 
+    [post_emp].[телефон] AS [телефон], 
+    [post_emp].[должность] AS [должность]
+    FROM [dbo].[post_emp] AS [post_emp]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="post_empl" EntityType="Self.post_empl" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [post_empl].[материал] AS [материал], 
+    [post_empl].[поставщик] AS [поставщик]
+    FROM [dbo].[post_empl] AS [post_empl]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__DrawingOr__IdDra__6E01572D" Association="Self.FK__DrawingOr__IdDra__6E01572D">
+            <End Role="Drawing" EntitySet="Drawing" />
+            <End Role="DrawingOrder" EntitySet="DrawingOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DrawingOr__IdOrd__6EF57B66" Association="Self.FK__DrawingOr__IdOrd__6EF57B66">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="DrawingOrder" EntitySet="DrawingOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__IdPost__5165187F" Association="Self.FK__Employee__IdPost__5165187F">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeO__IdEmp__6A30C649" Association="Self.FK__EmployeeO__IdEmp__6A30C649">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeOrder" EntitySet="EmployeeOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeO__IdOrd__6B24EA82" Association="Self.FK__EmployeeO__IdOrd__6B24EA82">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="EmployeeOrder" EntitySet="EmployeeOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__IdEqu__628FA481" Association="Self.FK__Equipment__IdEqu__628FA481">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="EquipmentSupplier" EntitySet="EquipmentSupplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__IdEqu__66603565" Association="Self.FK__Equipment__IdEqu__66603565">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="EquipmentOrder" EntitySet="EquipmentOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__IdOrd__6754599E" Association="Self.FK__Equipment__IdOrd__6754599E">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="EquipmentOrder" EntitySet="EquipmentOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__IdSup__6383C8BA" Association="Self.FK__Equipment__IdSup__6383C8BA">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="EquipmentSupplier" EntitySet="EquipmentSupplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MaterialO__IdMat__5EBF139D" Association="Self.FK__MaterialO__IdMat__5EBF139D">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="MaterialOrder" EntitySet="MaterialOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MaterialO__IdOrd__5FB337D6" Association="Self.FK__MaterialO__IdOrd__5FB337D6">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="MaterialOrder" EntitySet="MaterialOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MaterialS__IdMat__5AEE82B9" Association="Self.FK__MaterialS__IdMat__5AEE82B9">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="MaterialSupplier" EntitySet="MaterialSupplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MaterialS__IdSup__5BE2A6F2" Association="Self.FK__MaterialS__IdSup__5BE2A6F2">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="MaterialSupplier" EntitySet="MaterialSupplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__IdClient__5629CD9C" Association="Self.FK__Order__IdClient__5629CD9C">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Authorization" Association="Self.FK_Client_Authorization">
+            <End Role="Authorization" EntitySet="Authorization" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Authorization" Association="Self.FK_Employee_Authorization">
+            <End Role="Authorization" EntitySet="Authorization" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="age" ReturnType="Collection(Model.age_Result)">
+          <Parameter Name="age" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="mat" ReturnType="Collection(Model.mat_Result)">
+          <Parameter Name="title" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ord_cl" ReturnType="Collection(Model.ord_cl_Result)">
+          <Parameter Name="client" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="possst" ReturnType="Collection(Model.possst_Result)">
+          <Parameter Name="post" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Model.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Model.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="vremy" ReturnType="Collection(Model.vremy_Result)">
+            <Parameter Name="data1" Mode="In" Type="DateTime" />
+            <Parameter Name="data2" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="Authorization" EntityType="Model.Authorization" />
+          <EntitySet Name="Client" EntityType="Model.Client" />
+          <EntitySet Name="Drawing" EntityType="Model.Drawing" />
+          <EntitySet Name="Employee" EntityType="Model.Employee" />
+          <EntitySet Name="Equipment" EntityType="Model.Equipment" />
+          <EntitySet Name="EquipmentOrder" EntityType="Model.EquipmentOrder" />
+          <EntitySet Name="Material" EntityType="Model.Material" />
+          <EntitySet Name="MaterialOrder" EntityType="Model.MaterialOrder" />
+          <EntitySet Name="Order" EntityType="Model.Order" />
+          <EntitySet Name="Post" EntityType="Model.Post" />
+          <EntitySet Name="Supplier" EntityType="Model.Supplier" />
+          <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagrams" />
+          <EntitySet Name="avgKir" EntityType="Model.avgKir" />
+          <EntitySet Name="cl_ord" EntityType="Model.cl_ord" />
+          <EntitySet Name="ord_mat" EntityType="Model.ord_mat" />
+          <EntitySet Name="post_emp" EntityType="Model.post_emp" />
+          <EntitySet Name="post_empl" EntityType="Model.post_empl" />
+          <AssociationSet Name="FK_Client_Authorization" Association="Model.FK_Client_Authorization">
+            <End Role="Authorization" EntitySet="Authorization" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Authorization" Association="Model.FK_Employee_Authorization">
+            <End Role="Authorization" EntitySet="Authorization" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__IdClient__5629CD9C" Association="Model.FK__Order__IdClient__5629CD9C">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__IdPost__5165187F" Association="Model.FK__Employee__IdPost__5165187F">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__IdEqu__66603565" Association="Model.FK__Equipment__IdEqu__66603565">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="EquipmentOrder" EntitySet="EquipmentOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__IdOrd__6754599E" Association="Model.FK__Equipment__IdOrd__6754599E">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="EquipmentOrder" EntitySet="EquipmentOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MaterialO__IdMat__5EBF139D" Association="Model.FK__MaterialO__IdMat__5EBF139D">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="MaterialOrder" EntitySet="MaterialOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MaterialO__IdOrd__5FB337D6" Association="Model.FK__MaterialO__IdOrd__5FB337D6">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="MaterialOrder" EntitySet="MaterialOrder" />
+          </AssociationSet>
+          <AssociationSet Name="DrawingOrder" Association="Model.DrawingOrder">
+            <End Role="Drawing" EntitySet="Drawing" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeOrder" Association="Model.EmployeeOrder">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="EquipmentSupplier" Association="Model.EquipmentSupplier">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="MaterialSupplier" Association="Model.MaterialSupplier">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="age_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Patronymic" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="BirthDay" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="11" />
+        </ComplexType>
+        <ComplexType Name="mat_Result">
+          <Property Type="Decimal" Name="Column1" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="ord_cl_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="fff" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="possst_Result">
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="phone" Nullable="false" MaxLength="11" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="vremy_Result">
+          <Property Type="Int32" Name="IdClient" Nullable="true" />
+          <Property Type="Decimal" Name="Cost" Nullable="false" Precision="12" Scale="2" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="Model.FK_Client_Authorization" FromRole="Authorization" ToRole="Client" />
+          <NavigationProperty Name="Employee" Relationship="Model.FK_Employee_Authorization" FromRole="Authorization" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDay" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="IdAuthorization" Type="Int32" />
+          <NavigationProperty Name="Authorization" Relationship="Model.FK_Client_Authorization" FromRole="Client" ToRole="Authorization" />
+          <NavigationProperty Name="Order" Relationship="Model.FK__Order__IdClient__5629CD9C" FromRole="Client" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Drawing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoPath" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="Model.DrawingOrder" FromRole="Drawing" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDay" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="IdPost" Type="Int32" Nullable="false" />
+          <Property Name="IdAuthorization" Type="Int32" />
+          <NavigationProperty Name="Authorization" Relationship="Model.FK_Employee_Authorization" FromRole="Employee" ToRole="Authorization" />
+          <NavigationProperty Name="Post" Relationship="Model.FK__Employee__IdPost__5165187F" FromRole="Employee" ToRole="Post" />
+          <NavigationProperty Name="Order" Relationship="Model.EmployeeOrder" FromRole="Employee" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Discription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EquipmentOrder" Relationship="Model.FK__Equipment__IdEqu__66603565" FromRole="Equipment" ToRole="EquipmentOrder" />
+          <NavigationProperty Name="Supplier" Relationship="Model.EquipmentSupplier" FromRole="Equipment" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="EquipmentOrder">
+          <Key>
+            <PropertyRef Name="IdEquipment" />
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdEquipment" Type="Int32" Nullable="false" />
+          <Property Name="IdOrder" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <NavigationProperty Name="Equipment" Relationship="Model.FK__Equipment__IdEqu__66603565" FromRole="EquipmentOrder" ToRole="Equipment" />
+          <NavigationProperty Name="Order" Relationship="Model.FK__Equipment__IdOrd__6754599E" FromRole="EquipmentOrder" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Discription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MaterialOrder" Relationship="Model.FK__MaterialO__IdMat__5EBF139D" FromRole="Material" ToRole="MaterialOrder" />
+          <NavigationProperty Name="Supplier" Relationship="Model.MaterialSupplier" FromRole="Material" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="MaterialOrder">
+          <Key>
+            <PropertyRef Name="IdMaterial" />
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdMaterial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdOrder" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <NavigationProperty Name="Material" Relationship="Model.FK__MaterialO__IdMat__5EBF139D" FromRole="MaterialOrder" ToRole="Material" />
+          <NavigationProperty Name="Order" Relationship="Model.FK__MaterialO__IdOrd__5FB337D6" FromRole="MaterialOrder" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="IdClient" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="Model.FK__Order__IdClient__5629CD9C" FromRole="Order" ToRole="Client" />
+          <NavigationProperty Name="EquipmentOrder" Relationship="Model.FK__Equipment__IdOrd__6754599E" FromRole="Order" ToRole="EquipmentOrder" />
+          <NavigationProperty Name="MaterialOrder" Relationship="Model.FK__MaterialO__IdOrd__5FB337D6" FromRole="Order" ToRole="MaterialOrder" />
+          <NavigationProperty Name="Drawing" Relationship="Model.DrawingOrder" FromRole="Order" ToRole="Drawing" />
+          <NavigationProperty Name="Employee" Relationship="Model.EmployeeOrder" FromRole="Order" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Discription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="Model.FK__Employee__IdPost__5165187F" FromRole="Post" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="INN" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Equipment" Relationship="Model.EquipmentSupplier" FromRole="Supplier" ToRole="Equipment" />
+          <NavigationProperty Name="Material" Relationship="Model.MaterialSupplier" FromRole="Supplier" ToRole="Material" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="avgKir">
+          <Key>
+            <PropertyRef Name="материал" />
+            <PropertyRef Name="кол_во" />
+          </Key>
+          <Property Name="материал" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="кол_во" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cl_ord">
+          <Key>
+            <PropertyRef Name="имя" />
+            <PropertyRef Name="фамилия" />
+            <PropertyRef Name="телефон" />
+            <PropertyRef Name="дата_рождения" />
+          </Key>
+          <Property Name="имя" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="фамилия" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="отчество" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="телефон" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="дата_рождения" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="ord_mat">
+          <Key>
+            <PropertyRef Name="материал" />
+            <PropertyRef Name="цена" />
+            <PropertyRef Name="дата" />
+          </Key>
+          <Property Name="материал" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="цена" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="дата" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="post_emp">
+          <Key>
+            <PropertyRef Name="имя" />
+            <PropertyRef Name="фамилия" />
+            <PropertyRef Name="телефон" />
+            <PropertyRef Name="должность" />
+          </Key>
+          <Property Name="имя" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="фамилия" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="телефон" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="должность" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="post_empl">
+          <Key>
+            <PropertyRef Name="материал" />
+            <PropertyRef Name="поставщик" />
+          </Key>
+          <Property Name="материал" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="поставщик" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Client_Authorization">
+          <End Type="Model.Authorization" Role="Authorization" Multiplicity="0..1" />
+          <End Type="Model.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdAuthorization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Authorization">
+          <End Type="Model.Authorization" Role="Authorization" Multiplicity="0..1" />
+          <End Type="Model.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdAuthorization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order__IdClient__5629CD9C">
+          <End Type="Model.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__IdPost__5165187F">
+          <End Type="Model.Post" Role="Post" Multiplicity="1" />
+          <End Type="Model.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__IdEqu__66603565">
+          <End Type="Model.Equipment" Role="Equipment" Multiplicity="1" />
+          <End Type="Model.EquipmentOrder" Role="EquipmentOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentOrder">
+              <PropertyRef Name="IdEquipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__IdOrd__6754599E">
+          <End Type="Model.Order" Role="Order" Multiplicity="1" />
+          <End Type="Model.EquipmentOrder" Role="EquipmentOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipmentOrder">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MaterialO__IdMat__5EBF139D">
+          <End Type="Model.Material" Role="Material" Multiplicity="1" />
+          <End Type="Model.MaterialOrder" Role="MaterialOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialOrder">
+              <PropertyRef Name="IdMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MaterialO__IdOrd__5FB337D6">
+          <End Type="Model.Order" Role="Order" Multiplicity="1" />
+          <End Type="Model.MaterialOrder" Role="MaterialOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialOrder">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DrawingOrder">
+          <End Type="Model.Drawing" Role="Drawing" Multiplicity="*" />
+          <End Type="Model.Order" Role="Order" Multiplicity="*" />
+        </Association>
+        <Association Name="EmployeeOrder">
+          <End Type="Model.Employee" Role="Employee" Multiplicity="*" />
+          <End Type="Model.Order" Role="Order" Multiplicity="*" />
+        </Association>
+        <Association Name="EquipmentSupplier">
+          <End Type="Model.Equipment" Role="Equipment" Multiplicity="*" />
+          <End Type="Model.Supplier" Role="Supplier" Multiplicity="*" />
+        </Association>
+        <Association Name="MaterialSupplier">
+          <End Type="Model.Material" Role="Material" Multiplicity="*" />
+          <End Type="Model.Supplier" Role="Supplier" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+          <FunctionImportMapping FunctionImportName="age" FunctionName="Хранилище Model.age">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.age_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="mat" FunctionName="Хранилище Model.mat">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.mat_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ord_cl" FunctionName="Хранилище Model.ord_cl">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.ord_cl_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="fff" ColumnName="fff" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="possst" FunctionName="Хранилище Model.possst">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.possst_Result">
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище Model.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище Model.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище Model.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище Model.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище Model.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище Model.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище Model.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="vremy" FunctionName="Хранилище Model.vremy">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.vremy_Result">
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Authorization">
+            <EntityTypeMapping TypeName="Model.Authorization">
+              <MappingFragment StoreEntitySet="Authorization">
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="Model.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="IdAuthorization" ColumnName="IdAuthorization" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drawing">
+            <EntityTypeMapping TypeName="Model.Drawing">
+              <MappingFragment StoreEntitySet="Drawing">
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="Model.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="IdAuthorization" ColumnName="IdAuthorization" />
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipment">
+            <EntityTypeMapping TypeName="Model.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="Discription" ColumnName="Discription" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentOrder">
+            <EntityTypeMapping TypeName="Model.EquipmentOrder">
+              <MappingFragment StoreEntitySet="EquipmentOrder">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+                <ScalarProperty Name="IdEquipment" ColumnName="IdEquipment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Material">
+            <EntityTypeMapping TypeName="Model.Material">
+              <MappingFragment StoreEntitySet="Material">
+                <ScalarProperty Name="Discription" ColumnName="Discription" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaterialOrder">
+            <EntityTypeMapping TypeName="Model.MaterialOrder">
+              <MappingFragment StoreEntitySet="MaterialOrder">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+                <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="Model.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="Model.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="Discription" ColumnName="Discription" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier">
+            <EntityTypeMapping TypeName="Model.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="avgKir">
+            <EntityTypeMapping TypeName="Model.avgKir">
+              <MappingFragment StoreEntitySet="avgKir">
+                <ScalarProperty Name="кол_во" ColumnName="кол-во" />
+                <ScalarProperty Name="материал" ColumnName="материал" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cl_ord">
+            <EntityTypeMapping TypeName="Model.cl_ord">
+              <MappingFragment StoreEntitySet="cl_ord">
+                <ScalarProperty Name="дата_рождения" ColumnName="дата рождения" />
+                <ScalarProperty Name="телефон" ColumnName="телефон" />
+                <ScalarProperty Name="отчество" ColumnName="отчество" />
+                <ScalarProperty Name="фамилия" ColumnName="фамилия" />
+                <ScalarProperty Name="имя" ColumnName="имя" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ord_mat">
+            <EntityTypeMapping TypeName="Model.ord_mat">
+              <MappingFragment StoreEntitySet="ord_mat">
+                <ScalarProperty Name="дата" ColumnName="дата" />
+                <ScalarProperty Name="цена" ColumnName="цена" />
+                <ScalarProperty Name="материал" ColumnName="материал" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="post_emp">
+            <EntityTypeMapping TypeName="Model.post_emp">
+              <MappingFragment StoreEntitySet="post_emp">
+                <ScalarProperty Name="должность" ColumnName="должность" />
+                <ScalarProperty Name="телефон" ColumnName="телефон" />
+                <ScalarProperty Name="фамилия" ColumnName="фамилия" />
+                <ScalarProperty Name="имя" ColumnName="имя" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="post_empl">
+            <EntityTypeMapping TypeName="Model.post_empl">
+              <MappingFragment StoreEntitySet="post_empl">
+                <ScalarProperty Name="поставщик" ColumnName="поставщик" />
+                <ScalarProperty Name="материал" ColumnName="материал" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="DrawingOrder" TypeName="Model.DrawingOrder" StoreEntitySet="DrawingOrder">
+            <EndProperty Name="Order">
+              <ScalarProperty Name="Id" ColumnName="IdOrder" />
+            </EndProperty>
+            <EndProperty Name="Drawing">
+              <ScalarProperty Name="Id" ColumnName="IdDrawing" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="EmployeeOrder" TypeName="Model.EmployeeOrder" StoreEntitySet="EmployeeOrder">
+            <EndProperty Name="Order">
+              <ScalarProperty Name="Id" ColumnName="IdOrder" />
+            </EndProperty>
+            <EndProperty Name="Employee">
+              <ScalarProperty Name="Id" ColumnName="IdEmployee" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="EquipmentSupplier" TypeName="Model.EquipmentSupplier" StoreEntitySet="EquipmentSupplier">
+            <EndProperty Name="Supplier">
+              <ScalarProperty Name="Id" ColumnName="IdSupplier" />
+            </EndProperty>
+            <EndProperty Name="Equipment">
+              <ScalarProperty Name="Id" ColumnName="IdEquipment" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MaterialSupplier" TypeName="Model.MaterialSupplier" StoreEntitySet="MaterialSupplier">
+            <EndProperty Name="Supplier">
+              <ScalarProperty Name="Id" ColumnName="IdSupplier" />
+            </EndProperty>
+            <EndProperty Name="Material">
+              <ScalarProperty Name="Id" ColumnName="IdMaterial" />
+            </EndProperty>
+          </AssociationSetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

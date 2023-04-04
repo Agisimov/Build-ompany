@@ -1,0 +1,49 @@
+﻿<Page x:Class="ON163.Pagers.EmpPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ON163.Pagers"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="EmpPage">
+
+    <Grid>
+
+       
+
+        <DataGrid x:Name="EmpGrid"
+                  Height="350"
+                  Width="565"
+                  AutoGenerateColumns="False"
+               >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" Binding="{Binding Id}" Width="50"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="50"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="80"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}" Width="80"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding BirthDay}" Width="50"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="50"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="80"/>
+                <DataGridTextColumn Header="Номер должности" Binding="{Binding IdPost}" Width="150"/>
+                 </DataGrid.Columns>
+            
+            
+        </DataGrid>
+        <Button x:Name="delete"
+                Content="удалить"
+                  Height="30"
+                Width="100"
+                Margin="69,410,431,10" Click="delete_Click"
+               
+                />
+        <Button x:Name="add"
+                Content="добавить"
+                  Height="30"
+                Width="100"
+                Margin="250,410,250,10" Click="add_Click" 
+                
+                />
+
+    </Grid>
+</Page>

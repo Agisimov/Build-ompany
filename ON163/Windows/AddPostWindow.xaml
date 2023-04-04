@@ -1,0 +1,51 @@
+﻿<Window x:Class="ON163.Windows.AddPostWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ON163.Windows"
+        mc:Ignorable="d"
+        Title="AddPostWindow" Height="450" Width="600">
+    <Grid>
+        <TextBlock 
+            Text="Название"
+            Width="150"
+            Height="50"
+            FontSize="30"
+            Margin="0 0 350 250"
+            />
+        <TextBox x:Name="TBTitle"
+                 Width="200"
+            Height="30"
+                 Margin="0 0 0 250"
+                 />
+        <TextBlock 
+            Text="Описание"
+            Width="150"
+            Height="50"
+             FontSize="30"
+             Margin="0 0 350 80"
+            />
+        <TextBox x:Name="TBTDisk"
+                 Width="200"
+            Height="30"
+                 Margin="0 0 0 80"
+                 />
+        <Button x:Name="btnEdit"
+                Content="Сохранить"
+                Height="50"
+                Width="120"
+                FontSize="20"
+                Margin="0 300 0 0" Click="btnEdit_Click" >
+        </Button>
+        <Button x:Name="btnExit"
+                Content="Назад"
+                Height="50"
+                Width="120"
+                FontSize="20"
+                Margin="0 300 300 0" Click="btnExit_Click" >
+        </Button>
+
+
+    </Grid>
+</Window>
