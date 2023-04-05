@@ -9,6 +9,7 @@
     <Grid>
         <TextBlock
                 Height="20"
+             Foreground="#FFCE9234" 
                 Width="100"
                 Text="Имя"
                 FontSize="14" 
@@ -16,6 +17,7 @@
                ></TextBlock>
         <TextBox
                 x:Name="tbFName"
+             
                 Height="40"
                 Width="200"
                 FontSize="10"
@@ -24,6 +26,7 @@
         </TextBox>
         <TextBlock
                 Height="20"
+             Foreground="#FFCE9234" 
                 Width="102"
                 Text="Фамилия"
                 FontSize="14"
@@ -40,6 +43,7 @@
         </TextBox>
         <TextBlock
                 Height="20"
+             Foreground="#FFCE9234" 
                 Width="102"
                 Text="Отчество"
                 FontSize="14"
@@ -56,6 +60,7 @@
         </TextBox>
         <TextBlock
                 Height="20"
+             Foreground="#FFCE9234" 
                 Width="102"
                 Text="Дата рождения"
                 FontSize="14"
@@ -72,6 +77,7 @@
         </DatePicker>
         <TextBlock
                 Height="20"
+             Foreground="#FFCE9234" 
                 Width="102"
                 Text="Email"
                 FontSize="14"
@@ -88,6 +94,7 @@
         </TextBox>
         <TextBlock
                 Height="20"
+             Foreground="#FFCE9234" 
                 Width="102"
                 Text="Телефон"
                 FontSize="14"
@@ -104,16 +111,25 @@
         </TextBox>
         <Button x:Name="btnEdit"
                 Content="Сохранить"
+                 Foreground="#FFCE9234" Background="#FF635747"
                 Height="30"
                 Width="100"
                 Margin="0 300 0 0" Click="btnEdit_Click" >
         </Button>
         <Button x:Name="btnBack"
+                 Foreground="#FFCE9234" Background="#FF635747"
                 Content="Назад"
                 Height="30"
                 Width="100"
                 Margin="0 300 400 0" Click="btnBack_Click_1" >
         </Button>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="#FFCC8329" Offset="1"/>
+                <GradientStop Color="#FF4D4D4D" Offset="0.365"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
     </Grid>
 </Window>

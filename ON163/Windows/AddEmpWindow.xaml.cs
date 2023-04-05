@@ -68,6 +68,7 @@ namespace ON163.Windows
                 employee.IdPost = (cmbPost.SelectedItem as Post).Id;
                 context.Employee.Add(employee);
                 context.SaveChanges();
+                MessageBox.Show("Сохранено");
                 this.Close();
             }
 

@@ -40,6 +40,7 @@ namespace ON163.Windows
                 drawing.PhotoPath = tbPhoto.Text;
                 context.Drawing.Add(drawing);
                 context.SaveChanges();
+                MessageBox.Show("Сохранено");
                 this.Close();
             }
            

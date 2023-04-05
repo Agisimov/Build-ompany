@@ -48,5 +48,16 @@ namespace ON163.Pagers
                 PostGrid.ItemsSource = context.Post.ToList();
             }
         }
+
+        private void ismena_Click(object sender, RoutedEventArgs e)
+        {
+            context.SaveChanges();
+            MessageBox.Show("Сохранено");
+        }
+
+        private void obnova_Click(object sender, RoutedEventArgs e)
+        {
+            PostGrid.ItemsSource = ClassHelper.EFClass.context.Post.ToList();
+        }
     }
 }

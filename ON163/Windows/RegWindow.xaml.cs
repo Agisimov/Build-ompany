@@ -30,36 +30,42 @@ namespace ON163.Windows
             if (string.IsNullOrWhiteSpace(TextFirstName.Text))
             {
                 MessageBox.Show("имя не может быть пустым");
+                return;
             }
             if (string.IsNullOrWhiteSpace(TextLastName.Text))
             {
                 MessageBox.Show("фамилия не может быть пустой");
+                return;
             }
             if (string.IsNullOrWhiteSpace(TextPatromymic.Text))
             {
                 MessageBox.Show("отчество не может быть пустым");
+                return;
             }
             if (string.IsNullOrWhiteSpace(TextPhone.Text))
             {
                 MessageBox.Show("телефон не может быть пустым");
+                return;
             }
             if (string.IsNullOrWhiteSpace(TextLogin.Text))
             {
                 MessageBox.Show("логин не может быть пустым");
-
+                return;
             }
             if (string.IsNullOrWhiteSpace(PBPasswoed.Password))
             {
                 MessageBox.Show("пароль не может быть пустой");
-
+                return;
             }
             if (string.IsNullOrWhiteSpace(TextBirthday.Text))
             {
                 MessageBox.Show("дата не может быть пустой");
+                return;
             }
             if (string.IsNullOrWhiteSpace(TextEmail.Text))
             {
                 MessageBox.Show("Email не может быть пустой");
+                return;
             }
 
             var authUser = context.Authorization.ToList()

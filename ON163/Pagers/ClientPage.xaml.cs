@@ -68,5 +68,16 @@ namespace ON163.Pagers
             }
             ClientGrid.ItemsSource = context.Client.ToList().Where(i => i.FirstName.Contains(PoiskImy.Text));
         }
+
+        private void ismena_Click(object sender, RoutedEventArgs e)
+        {
+            context.SaveChanges();
+            MessageBox.Show("Сохранено");
+        }
+
+        private void obnova_Click(object sender, RoutedEventArgs e)
+        {
+            ClientGrid.ItemsSource = ClassHelper.EFClass.context.Client.ToList();
+        }
     }
 }

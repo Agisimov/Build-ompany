@@ -24,7 +24,7 @@ namespace ON163.Windows
         public AdminWindow()
         {
             InitializeComponent();
-            
+           
 
         }
 
@@ -75,6 +75,11 @@ namespace ON163.Windows
         private void btnSup_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.NavigationService.Navigate(new Pagers.AvtorizaciiPage());
+        }
+
+        private void MainFrame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+
         }
     }
 }

@@ -111,7 +111,7 @@
                Width="600"
                NavigationUIVisibility="Hidden" Grid.ColumnSpan="1"  
                Grid.Column="1"
-               Margin="-10,0,0,34"
+               Margin="-10,0,0,34" 
                />
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

@@ -7,8 +7,16 @@
         mc:Ignorable="d"
         Title="AddSuppWindow" Height="450" Width="600">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="#FFCC8329" Offset="1"/>
+                <GradientStop Color="#FF4D4D4D" Offset="0.365"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <TextBlock
                 Height="20"
+             Foreground="#FFCE9234" 
                 Width="100"
                 Text="Название"
                 FontSize="14" 
@@ -26,6 +34,7 @@
                 Height="20"
                 Width="102"
                 Text="Адрес"
+             Foreground="#FFCE9234"
                 FontSize="14"
                 Margin="0 0 450 180"
                 ></TextBlock>
@@ -40,6 +49,7 @@
         </TextBox>
         <TextBlock
                 Height="20"
+             Foreground="#FFCE9234" 
                 Width="102"
                 Text="ИНН"
                 FontSize="14"
@@ -58,6 +68,7 @@
                 Height="20"
                 Width="102"
                 Text="Телефон"
+             Foreground="#FFCE9234" 
                 FontSize="14"
                 Margin="0 20 450 0"
                 ></TextBlock>
@@ -72,12 +83,14 @@
         </TextBox>
         <Button x:Name="btnEdit"
                 Content="Сохранить"
+                 Foreground="#FFCE9234" Background="#FF635747"
                 Height="30"
                 Width="100"
                 Margin="0 300 0 0" Click="btnEdit_Click">
         </Button>
         <Button x:Name="btnBack"
                 Content="Назад"
+                 Foreground="#FFCE9234" Background="#FF635747"
                 Height="30"
                 Width="100"
                 Margin="0 300 400 0" Click="btnBack_Click"  >

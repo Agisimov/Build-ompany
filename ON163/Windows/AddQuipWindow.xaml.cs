@@ -43,6 +43,7 @@ namespace ON163.Windows
                 equipment.Discription = tbDisc.Text;
                 context.Equipment.Add(equipment);
                 context.SaveChanges();
+                MessageBox.Show("Сохранено");
                 this.Close();
             }
 

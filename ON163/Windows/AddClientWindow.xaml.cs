@@ -74,10 +74,7 @@ namespace ON163.Windows
            
         }
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
 
         private void btnBack_Click_1(object sender, RoutedEventArgs e)
         {

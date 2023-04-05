@@ -12,6 +12,7 @@ namespace ON163.ClassHelper
     public class EFClass
     {
         public static Entities context { get; } = new Entities();
-    
+      
+
     }
 }

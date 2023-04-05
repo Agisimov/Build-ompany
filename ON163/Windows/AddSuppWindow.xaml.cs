@@ -53,6 +53,7 @@ namespace ON163.Windows
                 supplier.Phone = tbPhone.Text;
                 context.Supplier.Add(supplier);
                 context.SaveChanges();
+                MessageBox.Show("Сохранено");
                 this.Close();
             }
 

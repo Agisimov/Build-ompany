@@ -43,6 +43,7 @@ namespace ON163.Windows
                 material.Discription = tbDisc.Text;
                 context.Material.Add(material);
                 context.SaveChanges();
+                MessageBox.Show("Сохранено");
                 this.Close();
             }
 

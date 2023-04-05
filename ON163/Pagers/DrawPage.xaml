@@ -34,5 +34,20 @@
                 Margin="250,410,250,10" Click="add_Click" 
                 
                 />
+        <Button x:Name="ismena"
+                Content="Сохранить"
+                  Height="30"
+                Width="100"
+                Margin="280 410 0 10" Click="ismena_Click" 
+                
+                />
+        <Button x:Name="obnova"
+                Content="обновить"
+                  Height="30"
+                Width="80"
+                Margin="480 410 0 10" Click="obnova_Click" 
+                
+                />
+
     </Grid>
 </Page>

@@ -43,8 +43,9 @@ namespace ON163.Windows
                 post.Discription = TBTDisk.Text;
                 context.Post.Add(post);
                 context.SaveChanges();
+                MessageBox.Show("Сохранено");
                 this.Close();
-                MessageBox.Show("Ок");
+               
             }
 
 
@@ -54,8 +55,7 @@ namespace ON163.Windows
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            AdminWindow adminWindow = new AdminWindow();
-            adminWindow.Show();
+          
             this.Close();
         }
     }

@@ -66,5 +66,16 @@ namespace ON163.Pagers
             }
             SupGrid.ItemsSource = context.Supplier.ToList().Where(i => i.Phone.Contains(PoiskImy.Text));
         }
+
+        private void ismena_Click(object sender, RoutedEventArgs e)
+        {
+            context.SaveChanges();
+            MessageBox.Show("Сохранено");
+        }
+
+        private void obnova_Click(object sender, RoutedEventArgs e)
+        {
+            SupGrid.ItemsSource = ClassHelper.EFClass.context.Supplier.ToList();
+        }
     }
 }

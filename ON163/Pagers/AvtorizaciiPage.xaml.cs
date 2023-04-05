@@ -46,5 +46,17 @@ namespace ON163.Pagers
                 AvtorGrid.ItemsSource = context.Authorization.ToList();
             }
         }
+
+        private void ismena_Click(object sender, RoutedEventArgs e)
+        {
+          
+            context.SaveChanges();
+            MessageBox.Show("Сохранено");
+        }
+
+        private void obnova_Click(object sender, RoutedEventArgs e)
+        {
+            AvtorGrid.ItemsSource = ClassHelper.EFClass.context.Authorization.ToList();
+        }
     }
 }

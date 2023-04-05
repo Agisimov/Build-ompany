@@ -61,5 +61,16 @@ namespace ON163.Pagers
             }
             MatGrid.ItemsSource = context.Material.ToList().Where(i => i.Title.Contains(Poisk.Text));
         }
+
+        private void ismena_Click(object sender, RoutedEventArgs e)
+        {
+            context.SaveChanges();
+            MessageBox.Show("Сохранено");
+        }
+
+        private void obnova_Click(object sender, RoutedEventArgs e)
+        {
+            MatGrid.ItemsSource = ClassHelper.EFClass.context.Material.ToList();
+        }
     }
 }

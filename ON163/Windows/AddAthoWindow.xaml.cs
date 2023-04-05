@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using static ON163.ClassHelper.EFClass;
 using ON163.DB;
+using ON163.Pagers;
 
 namespace ON163.Windows
 {
@@ -43,7 +44,9 @@ namespace ON163.Windows
                 authorization.Login = tbLogin.Text;
                 context.Authorization.Add(authorization);
                 context.SaveChanges();
+                
                 this.Close();
+                MessageBox.Show("Сохранено");
             }
 
 

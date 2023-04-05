@@ -70,5 +70,17 @@ namespace ON163.Pagers
             }
             EmpGrid.ItemsSource = context.Employee.ToList().Where(i=> i.FirstName.Contains(PoiskImy.Text));
         }
+
+        private void ismena_Click(object sender, RoutedEventArgs e)
+        {
+            context.SaveChanges();
+            EmpGrid.ItemsSource = ClassHelper.EFClass.context.Employee.ToList();
+            MessageBox.Show("Сохранено");
+        }
+
+        private void obnova_Click(object sender, RoutedEventArgs e)
+        {
+            EmpGrid.ItemsSource = ClassHelper.EFClass.context.Employee.ToList();
+        }
     }
 }

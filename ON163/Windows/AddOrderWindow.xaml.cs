@@ -52,6 +52,7 @@ namespace ON163.Windows
                 order.Cost = Convert.ToDecimal(tbCost.Text);
                 context.Order.Add(order);
                 context.SaveChanges();
+                MessageBox.Show("Сохранено");
                 this.Close();
             }
 
