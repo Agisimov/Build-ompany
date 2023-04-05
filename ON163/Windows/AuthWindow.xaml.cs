@@ -101,6 +101,8 @@ namespace ON163.Windows
             GenerateCaptcha();
         }
 
+
+
         private void TBRegistr_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             RegWindow reg = new RegWindow();
