@@ -97,6 +97,7 @@ namespace ON163.Windows
 
         private void btnCap_Click(object sender, RoutedEventArgs e)
         {
+
             GenerateCaptcha();
         }
 
